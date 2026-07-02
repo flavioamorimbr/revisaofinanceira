@@ -756,13 +756,14 @@ async function handleSubmit(e){
   const data=new FormData(form);
   const body=Object.fromEntries(data.entries());
 
-  // Enviar para FormsFree → contato@astf.com.br
+  // Enviar para Formspree → contato@astf.com.br
   try{
-    await fetch('https://formfree.cc/contato@astf.com.br',{
+    await fetch('https://formspree.io/f/xbdvpzdd',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
       body:JSON.stringify({
         _subject:'Nova contratação — RevisãoFinanceira.com.br',
+        _replyto: body.email,
         ...body
       })
     });
