@@ -7,7 +7,7 @@
 <meta name="description" content="Análise técnica pericial de contratos imobiliários e planos de saúde PF e PJ. Laudo pericial + assessoria jurídica especializada. Mais de 25 anos de experiência.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -188,8 +188,7 @@ footer{background:var(--bg2);border-top:1px solid rgba(29,158,117,.07);padding:3
 .pix-title{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.5rem;margin-bottom:.4rem}
 .pix-sub{font-size:.88rem;color:var(--gray);margin-bottom:1.5rem;line-height:1.6}
 .pix-amount{font-family:'Outfit',sans-serif;font-weight:900;font-size:2.5rem;color:var(--gold);margin-bottom:1.5rem}
-#qrcode-container{display:flex;justify-content:center;margin-bottom:1.5rem}
-#qrcode-container canvas,#qrcode-container img{border-radius:12px;border:4px solid var(--white)}
+
 .pix-code-wrap{background:rgba(255,255,255,.05);border:1px solid rgba(29,158,117,.2);border-radius:12px;padding:1rem;margin-bottom:1.2rem}
 .pix-code-label{font-size:.72rem;color:var(--gray);margin-bottom:.5rem;display:block}
 .pix-code{font-size:.65rem;color:var(--green3);word-break:break-all;line-height:1.5;font-family:monospace}
@@ -706,31 +705,47 @@ footer{background:var(--bg2);border-top:1px solid rgba(29,158,117,.07);padding:3
   </div>
 </div>
 
-<!-- ═══ MODAL PIX ═══ -->
-<div class="overlay" id="overlayPix" onclick="handleOverlayClick(event,'overlayPix')">
-  <div class="modal" style="text-align:center">
-    <button class="modal-close" onclick="closeModal('overlayPix')">✕</button>
-    <div class="pix-icon">🏦</div>
-    <h2 class="pix-title">Pagamento via Pix</h2>
-    <p class="pix-sub">Escaneie o QR Code ou copie o código abaixo. Após o pagamento, nossa equipe entrará em contato em até 24h úteis para orientar o envio dos documentos.</p>
-    <div class="pix-amount">R$ 300,00</div>
-    <div id="qrcode-container"></div>
-    <div class="pix-code-wrap">
-      <span class="pix-code-label">Pix Copia e Cola</span>
-      <div class="pix-code" id="pixCodeText">00020126410014BR.GOV.BCB.PIX0119contato@astf.com.br5204000053039865406300.005802BR5920ASTF ANALISE TECNICA6009SAO PAULO62180514ANALISETECNICAD02B</div>
-    </div>
-    <button class="btn-copy" id="btnCopy" onclick="copyPix()">📋 Copiar código Pix</button>
-    <p class="pix-note">
-      Após o pagamento, guarde o comprovante. Nossa equipe confirma o recebimento
-      e entra em contato para orientar o envio da documentação do contrato.
-      Dúvidas: <a href="mailto:contato@astf.com.br" style="color:var(--green3)">contato@astf.com.br</a>
+<!-- ═══ MODAL OBRIGADO ═══ -->
+<div class="overlay" id="overlayObrigado" onclick="handleOverlayClick(event,'overlayObrigado')">
+  <div class="modal" style="text-align:center;padding:3rem 2.5rem">
+    <button class="modal-close" onclick="closeModal('overlayObrigado')">✕</button>
+
+    <!-- Ícone animado -->
+    <div style="width:72px;height:72px;border-radius:50%;background:rgba(29,158,117,.15);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2rem">✅</div>
+
+    <span class="m-eye" style="display:block;margin-bottom:.6rem">Solicitação recebida</span>
+    <h2 class="m-title" style="font-size:1.6rem;margin-bottom:1rem">Obrigado pelo<br>seu contato!</h2>
+
+    <p style="font-size:.97rem;color:var(--gray);line-height:1.75;margin-bottom:2rem">
+      Sua solicitação foi enviada. Em breve nossa equipe entrará em contato.<br>
+      Para mais informações, clique no botão abaixo para falar conosco.
+    </p>
+
+    <!-- Botão WhatsApp -->
+    <a
+      id="btnWhatsapp"
+      href="https://wa.me/5579996047070?text=Eu%20preenchi%20o%20formul%C3%A1rio%20para%20an%C3%A1lise.%20Quero%20mais%20informa%C3%A7%C3%B5es."
+      target="_blank"
+      rel="noopener"
+      style="display:inline-flex;align-items:center;justify-content:center;gap:.75rem;width:100%;padding:1.1rem 1.5rem;background:#25D366;color:#fff;font-family:'Outfit',sans-serif;font-weight:800;font-size:1.05rem;border-radius:50px;text-decoration:none;transition:background .2s,transform .15s;box-shadow:0 8px 28px rgba(37,211,102,.3)"
+      onmouseover="this.style.background='#1EB957';this.style.transform='translateY(-2px)'"
+      onmouseout="this.style.background='#25D366';this.style.transform='translateY(0)'"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.528 5.845L.057 23.454a.75.75 0 0 0 .918.918l5.618-1.474A11.953 11.953 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.7-.515-5.243-1.411l-.374-.22-3.882 1.018 1.018-3.867-.228-.381A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Falar no WhatsApp
+    </a>
+
+    <p style="font-size:.75rem;color:var(--gray2);margin-top:1.2rem;line-height:1.6">
+      Ou envie um e-mail para
+      <a href="mailto:contato@astf.com.br" style="color:var(--green3);text-decoration:none">contato@astf.com.br</a>
     </p>
   </div>
 </div>
 
 <script>
-const PIX_CODE = "00020126410014BR.GOV.BCB.PIX0119contato@astf.com.br5204000053039865406300.005802BR5920ASTF ANALISE TECNICA6009SAO PAULO62180514ANALISETECNICAD02B";
-
 /* ── MODAIS ─────────────────── */
 function openForm(){
   document.getElementById('overlayForm').classList.add('active');
@@ -769,43 +784,15 @@ async function handleSubmit(e){
     });
   }catch(_){}
 
-  // Independente da resposta: fechar form, abrir Pix
+  // Independente da resposta: fechar form e abrir página de obrigado
   closeModal('overlayForm');
-  setTimeout(()=>openPix(),300);
+  setTimeout(()=>openObrigado(),300);
 }
 
-/* ── PIX ────────────────────── */
-let qrGenerated=false;
-function openPix(){
-  document.getElementById('overlayPix').classList.add('active');
+/* ── OBRIGADO ────────────────── */
+function openObrigado(){
+  document.getElementById('overlayObrigado').classList.add('active');
   document.body.style.overflow='hidden';
-  if(!qrGenerated){
-    qrGenerated=true;
-    new QRCode(document.getElementById('qrcode-container'),{
-      text: PIX_CODE,
-      width: 200, height: 200,
-      colorDark:'#04342C', colorLight:'#ffffff',
-      correctLevel: QRCode.CorrectLevel.M
-    });
-  }
-}
-
-function copyPix(){
-  navigator.clipboard.writeText(PIX_CODE).then(()=>{
-    const btn=document.getElementById('btnCopy');
-    btn.textContent='✓ Código copiado!';
-    btn.classList.add('copied');
-    setTimeout(()=>{btn.textContent='📋 Copiar código Pix';btn.classList.remove('copied');},3000);
-  }).catch(()=>{
-    const el=document.getElementById('pixCodeText');
-    const sel=window.getSelection(),range=document.createRange();
-    range.selectNodeContents(el); sel.removeAllRanges(); sel.addRange(range);
-    document.execCommand('copy');
-    const btn=document.getElementById('btnCopy');
-    btn.textContent='✓ Código copiado!';
-    btn.classList.add('copied');
-    setTimeout(()=>{btn.textContent='📋 Copiar código Pix';btn.classList.remove('copied');},3000);
-  });
 }
 
 /* ── FADE UP ─────────────────── */
